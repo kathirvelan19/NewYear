@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .main-heading {
+    font-family: 'Dancing Script', cursive;
+    background: linear-gradient(135deg, #ff99cc 0%, #ffd700 50%, #ff99cc 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(255, 153, 204, 0.5);
+    animation: gradientShift 3s ease infinite, glow 2s ease-in-out infinite;
+    transition: transform 0.3s ease;
+  }
+
+  .main-heading:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 20px rgba(255, 153, 204, 0.8));
+  }
+
+  .highlight-text {
+    background: linear-gradient(135deg, #ffd700, #ff99cc);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+    animation: gradientShift 3s ease infinite, shimmer 2s ease-in-out infinite;
+    display: inline-block;
+  }
+
+  .glow-text {
+    color: #ff99cc;
+    text-shadow: 0 0 20px rgba(255, 153, 204, 0.6);
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  .content-container {
+    animation: fadeInScale 0.8s ease-out;
+  }
+
+  .paragraph-item:hover {
+    transform: translateX(10px) scale(1.02);
+    text-shadow: 0 0 10px rgba(255, 153, 204, 0.3);
+  }
+
+  .footer-wish {
+    animation: fadeInUp 1s ease-out 2s forwards;
+  }
+}
+
+@layer utilities {
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+    }
+    25% {
+      transform: translateY(-20px) translateX(10px);
+    }
+    50% {
+      transform: translateY(-10px) translateX(-10px);
+    }
+    75% {
+      transform: translateY(-15px) translateX(5px);
+    }
+  }
+
+  @keyframes float-up {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(-100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes gradientShift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      filter: drop-shadow(0 0 10px rgba(255, 153, 204, 0.4));
+    }
+    50% {
+      filter: drop-shadow(0 0 20px rgba(255, 153, 204, 0.8));
+    }
+  }
+
+  @keyframes shimmer {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes burst {
+    0% {
+      transform: translate(-50%, -50%) scale(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(
+        calc(-50% + var(--burst-x)),
+        calc(-50% + var(--burst-y))
+      ) scale(1.5) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  .animate-float {
+    animation: float 15s infinite ease-in-out;
+  }
+
+  .animate-float-up {
+    animation: float-up 15s infinite linear;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 4s infinite ease-in-out;
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 1s ease-out forwards;
+  }
+
+  .animate-burst {
+    animation: burst 1.5s ease-out forwards;
+  }
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ff99cc #2b0038;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #2b0038;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #ff99cc;
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #ffd700;
+}
